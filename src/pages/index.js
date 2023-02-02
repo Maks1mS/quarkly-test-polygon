@@ -16,8 +16,8 @@ export default (() => {
 			<meta name={"description"} content={"Web site created using quarkly.io"} />
 			<link rel={"shortcut icon"} href={"https://uploads.quarkly.io/readme/cra/favicon-32x32.ico"} type={"image/x-icon"} />
 		</Helmet>
-		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader />
-		<Components.QuarklycommunityKitCsvToTable data="#;Product; Date Applied;Date Payment Received;Number of shares; Face Value; Date of Allotment; Status\\n1;7.5% Convertible Preference Shares;24/01/2023;24/01/2023;100;500000;24/01/2023; Pending" hasHeader csvDelimiter=";" />
+		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader />
+		<Components.QuarklycommunityKitCsvToTable data="#;Product; Date Applied;Date Payment Received;Number of shares; Face Value; Date of Allotment; Status\\\\n1;7.5% Convertible Preference Shares;24/01/2023;24/01/2023;100;500000;24/01/2023; Pending" hasHeader csvDelimiter=";" />
 		<Components.Table showHeader showFooter>
 			<Override slot="Text TBody Row-1 Col-3">
 				asdasd
@@ -59,11 +59,11 @@ export default (() => {
 		<Text margin="0px 0px 0px 0px">
 			\n
 		</Text>
-		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader />
+		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader />
 		<Text margin="0px 0px 0px 0px">
 			\\n
 		</Text>
-		<Components.CsvToTable2 data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" />
+		<Components.CsvToTable2 data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" />
 		<Components.QuarklycommunityKitPopup />
 		<Components.QuarklycommunityKitTimeline>
 			<Override slot="Descr 0">
@@ -73,10 +73,10 @@ export default (() => {
 		<Components.Carousel
 			autoPlay={false}
 			autoPlayBehavior="range"
-			autoPlayDelayProp="0s"
-			showArrows
 			showDots
+			showArrows
 			autoPlayIntervalProp="1s"
+			autoPlayDelayProp="0s"
 		>
 			<Override slot="Slide 1">
 				<Box min-width="100px" min-height="100px" background="--color-orange" />
@@ -100,7 +100,7 @@ export default (() => {
 			</Override>
 			<Override slot="Slides" overflow-x="visible" overflow-y="visible" />
 		</Components.Carousel>
-		<Components.QuarklycommunityKitCookieUsed show={false} />
+		<Components.QuarklycommunityKitCookieUsed />
 		<RawHtml>
 			<style place={"endOfHead"} rawKey={"63d15c40f2f031001fb77bf3"}>
 				{":root {\n  box-sizing: border-box;\n}\n\n* {\n  box-sizing: inherit;\n}"}
