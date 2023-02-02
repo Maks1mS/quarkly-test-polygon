@@ -6,7 +6,7 @@ import { useOverrides } from "@quarkly/components"; // ../community-kit/src/Cook
 var item = "accept_cookies";
 
 var get = () => {
-	if (typeof window === "undefined") return false;
+	if (typeof window === "undefined") return true;
 	console.log('storage.get');
 	return localStorage.getItem(item);
 };
