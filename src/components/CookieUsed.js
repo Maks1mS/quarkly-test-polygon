@@ -1,21 +1,7 @@
 // ../community-kit/src/CookieUsed/CookieUsed.js
 import React, { useEffect, useState, useCallback } from "react";
 import { Box, Button, Text } from "@quarkly/widgets";
-import { useOverrides } from "@quarkly/components"; // ../community-kit/src/utils/getAPI.js
-
-var getAPI = () => {
-	if (typeof window !== "undefined") {
-		return window.QAPI || {};
-	}
-
-	if (typeof global !== "undefined") {
-		return global.QAPI || {};
-	}
-
-	return {};
-};
-
-var getAPI_default = getAPI; // ../community-kit/src/CookieUsed/utils/storage.js
+import { useOverrides } from "@quarkly/components"; // ../community-kit/src/CookieUsed/utils/storage.js
 
 var item = "accept_cookies";
 
@@ -102,7 +88,7 @@ var CookieUsed = ({
 	display,
 	...props
 }) => {
-	const isDev = getAPI_default().mode === "development";
+	const isDev = false;
 	const [show, setShow] = useState(getDefaultState_default(isDev, showFromProps));
 	const {
 		override,
