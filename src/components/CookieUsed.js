@@ -126,6 +126,8 @@ var CookieUsed = ({
 		<Text {...override("Text")} />
 		    
 		<Button margin-left={variant === "horizontal" && "10px"} onClick={handleClick} {...override("Button")} />
+		    
+		{show ? display : "none"}
 		  
 	</Box>;
 };
