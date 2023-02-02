@@ -100,6 +100,14 @@ export default (() => {
 			</Override>
 			<Override slot="Slides" overflow-x="visible" overflow-y="visible" />
 		</Components.Carousel>
+		<Components.CookieUsed
+			bottom="125px"
+			height="110px"
+			left="0px"
+			right="0px"
+			top="auto"
+			background="--color-red"
+		/>
 		<Components.QuarklycommunityKitCookieUsed />
 		<RawHtml>
 			<style place={"endOfHead"} rawKey={"63d15c40f2f031001fb77bf3"}>
