@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://startling-wisp-de8df2.netlify.app/sitemap-index.xml
