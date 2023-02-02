@@ -6,30 +6,19 @@ import { useOverrides } from "@quarkly/components"; // ../community-kit/src/Cook
 var item = "accept_cookies";
 
 var get = () => {
-	if (typeof window === "undefined") return true;
-	console.log('storage.get');
+	if (typeof window === "undefined") return false;
 	return localStorage.getItem(item);
 };
 
 var set = value => {
 	if (typeof window === "undefined") return;
-	console.log('storage.set');
 	localStorage.setItem(item, value);
 };
 
 var storage_default = {
 	get,
 	set
-}; // ../community-kit/src/CookieUsed/utils/getDefaultState.js
-
-var getDefaultState = (isDev, show) => {
-	console.log('getDefaultState');
-	console.log('isDev', isDev);
-	console.log(!storage_default.get());
-	return isDev ? show : !storage_default.get();
-};
-
-var getDefaultState_default = getDefaultState; // ../community-kit/src/CookieUsed/props/overrides.js
+}; // ../community-kit/src/CookieUsed/props/overrides.js
 
 var overrides_default = {
 	Text: {
@@ -94,11 +83,14 @@ var CookieUsed = ({
 	...props
 }) => {
 	const isDev = false;
-	const [show, setShow] = useState(getDefaultState_default(isDev, showFromProps));
+	const [show, setShow] = useState(false);
 	const {
 		override,
 		rest
 	} = useOverrides(props, overrides_default);
+	useEffect(() => {
+		setShow(!storage_default.get());
+	}, []);
 	const handleClick = useCallback(() => {
 		if (isDev) return;
 		storage_default.set(true);
@@ -108,7 +100,6 @@ var CookieUsed = ({
 		if (!isDev) return;
 		setShow(showFromProps);
 	}, [showFromProps, isDev]);
-	console.log(show, rest);
 	return <Box
 		display={show ? display : "none"}
 		flex-direction={variant === "horizontal" ? "row" : "column"}
@@ -126,8 +117,6 @@ var CookieUsed = ({
 		<Text {...override("Text")} />
 		    
 		<Button margin-left={variant === "horizontal" && "10px"} onClick={handleClick} {...override("Button")} />
-		    
-		{show ? display : "none"}
 		  
 	</Box>;
 };
