@@ -108,7 +108,7 @@ var CookieUsed = ({
 		if (!isDev) return;
 		setShow(showFromProps);
 	}, [showFromProps, isDev]);
-	console.log(show);
+	console.log(show, rest);
 	return <Box
 		display={show ? display : "none"}
 		flex-direction={variant === "horizontal" ? "row" : "column"}
