@@ -7,11 +7,13 @@ var item = "accept_cookies";
 
 var get = () => {
 	if (typeof window === "undefined") return false;
+	console.log('storage.get');
 	return localStorage.getItem(item);
 };
 
 var set = value => {
 	if (typeof window === "undefined") return;
+	console.log('storage.set');
 	localStorage.setItem(item, value);
 };
 
@@ -21,6 +23,9 @@ var storage_default = {
 }; // ../community-kit/src/CookieUsed/utils/getDefaultState.js
 
 var getDefaultState = (isDev, show) => {
+	console.log('getDefaultState');
+	console.log('isDev', isDev);
+	console.log(!storage_default.get());
 	return isDev ? show : !storage_default.get();
 };
 
@@ -103,6 +108,7 @@ var CookieUsed = ({
 		if (!isDev) return;
 		setShow(showFromProps);
 	}, [showFromProps, isDev]);
+	console.log(show);
 	return <Box
 		display={show ? display : "none"}
 		flex-direction={variant === "horizontal" ? "row" : "column"}
