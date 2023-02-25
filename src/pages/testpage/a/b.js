@@ -15,8 +15,8 @@ export default (() => {
 			<meta name={"description"} content={"Web site created using quarkly.io"} />
 			<link rel={"shortcut icon"} href={"https://uploads.quarkly.io/readme/cra/favicon-32x32.ico"} type={"image/x-icon"} />
 		</Helmet>
-		<Components.QuarklycommunityKitMenu depth="10" rootId="/testpage" />
-		<Components.MyMenu filterMode="include" depth="5" exact-active-match filterPages="/index,/testpage/a/b" />
+		<Components.QuarklycommunityKitMenu depth="10" />
+		<Components.MyMenu filterMode="include" depth="5" exact-active-match={false} filterPages="/index,/testpage/a/b" />
 		<RawHtml>
 			<style place={"endOfHead"} rawKey={"63d15c40f2f031001fb77bf3"}>
 				{":root {\n  box-sizing: border-box;\n}\n\n* {\n  box-sizing: inherit;\n}"}

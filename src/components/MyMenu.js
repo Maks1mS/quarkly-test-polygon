@@ -127,7 +127,6 @@ var Li = atomize.li();
 
 var Item = ({
 	id,
-	absoluteUrl,
 	pages,
 	exact = false,
 	depth = 0,
@@ -152,7 +151,7 @@ var Item = ({
 		mode,
 		projectType
 	} = getAPI_default() || {};
-	const href = absoluteUrl;
+	const href = item.absoluteUrl;
 	let match = null;
 
 	if (projectType === "gatsby") {
@@ -288,7 +287,6 @@ var Menu = ({
 	} = useOverrides(props, overrides_default, propsDefault_default);
 	const pages = getAPI_default().pages || {};
 	const tree = getPagesTree(pages);
-	console.log(tree);
 	const subtree = findSubtree(tree, rootId);
 	const filterPages = origFilterPages?.length > 0 ? origFilterPages.split(",") : [];
 	const filteredSubtree = filterSubtree(subtree, filterMode, filterPages);
