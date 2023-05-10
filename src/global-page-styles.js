@@ -9,7 +9,11 @@ const pageStyles = {
     "testpage/__": {},
     "testpage/a": {},
     "testpage/a/b": {},
-    "asasd": {}
+    "asasd": {},
+    "test": {},
+    "smooth": {},
+    "carousel-test": {},
+    "carousel2": {}
 };
 
 const PageStyles = createGlobalStyle`

@@ -28,8 +28,8 @@ var propsInfo_default = {
 	},
 	"exact-active-match": {
 		title: {
-			en: "Mark parent active items",
-			ru: "Выделять родительские активные пункты"
+			en: "Don't mark parent active items",
+			ru: "Не выделять родительские активные пункты"
 		},
 		control: "checkbox",
 		category: "Main",
@@ -120,35 +120,117 @@ var getAPI = () => {
 	return {};
 };
 
-var getAPI_default = getAPI; // Menu/Menu.js
+var getAPI_default = getAPI; // Menu/utils.js
+
+var PageTreeNode = class {
+	static fromPages(pages) {
+		return this._fromPages(pages);
+	}
+
+	static _fromPages(pages, rootID = "root", baseURL = "") {
+		const node = pages[rootID];
+		const childNodes = node.children;
+		const result = new PageTreeNode();
+		result.id = node.id;
+		result.name = node.name;
+		result.pageUrl = node.pageUrl;
+		result.absoluteUrl = rootID !== "root" ? `${baseURL}/${node.pageUrl}` : "";
+
+		if (childNodes) {
+			result.children = childNodes.map(el => this._fromPages(pages, el, result.absoluteUrl));
+		}
+
+		return result;
+	}
+
+	findSubtreeByUrl(url) {
+		if (this.absoluteUrl === url) {
+			return this;
+		}
+
+		if (this.children) {
+			let result = null;
+			this.children.some(el => {
+				result = el.findSubtreeByUrl(url);
+				return result;
+			});
+			return result;
+		}
+
+		return null;
+	}
+
+	filterByPages(mode, pages) {
+		switch (mode) {
+			case "exclude":
+				this.children = this.children.flatMap(el => {
+					if (pages.includes(el.absoluteUrl)) {
+						return [];
+					}
+
+					if (el.children) {
+						el = el.filterByPages(mode, pages);
+					}
+
+					return [el];
+				});
+				return this;
+
+			case "include":
+				this.children = this.children.flatMap(el => {
+					if (el.children) {
+						el = el.filterByPages(mode, pages);
+					}
+
+					if (pages.includes(el.absoluteUrl) || el?.children?.length > 0) {
+						return [el];
+					}
+
+					return [];
+				});
+				return this;
+
+			default:
+				console.warn("Unexpected mode");
+				return this;
+		}
+	}
+
+	truncate(depth) {
+		return this._trunc(depth, 0);
+	}
+
+	_trunc(depth, level = 0) {
+		if (this.children) {
+			this.children = this.children.flatMap(el => {
+				if (level >= depth) {
+					return [];
+				}
+
+				return [el._trunc(depth, level + 1)];
+			});
+		}
+
+		return this;
+	}
+
+}; // Menu/Menu.js
 
 var Ul = atomize.ul();
 var Li = atomize.li();
 
 var Item = ({
-	id,
-	pages,
 	exact = false,
-	depth = 0,
-	level = 0,
 	override,
-	filterPages,
-	filterMode,
 	item
 }) => {
-	const hasSub = !!(item?.children?.length && level < depth);
+	const hasSub = !!item?.children?.length;
 	const common = {
-		pages,
 		exact,
-		depth,
-		level,
 		override,
-		filterPages,
-		filterMode,
 		item
 	};
 	const {
-		mode,
 		projectType
 	} = getAPI_default() || {};
 	const href = item.absoluteUrl;
@@ -174,107 +256,30 @@ var Item = ({
 			{linkProps.children || name}
 		</Link>
 		    
-		{hasSub && <Wrapper rootId={id} tree={item} {...common} {...override("sub", `sub-${pageUrl}`)} />}
+		{hasSub && <Wrapper tree={item} {...common} {...override("sub", `sub-${pageUrl}`)} />}
 		  
 	</Li>;
 };
 
 var Wrapper = ({
-	pages,
-	rootId,
 	override,
-	depth,
-	level = 0,
 	exact,
-	filterMode,
-	filterPages,
 	tree,
 	...rest
 }) => {
 	const common = {
-		pages,
 		override,
-		depth,
 		exact,
-		filterMode,
-		filterPages,
 		tree
 	};
 	const list = tree?.children ?? [];
 	return <Ul {...rest}>
-		{list.map(item => <Item key={item.id} item={item} {...common} level={level + 1} />)}
+		{list.map(item => <Item key={item.id} item={item} {...common} />)}
 	</Ul>;
 };
 
-var getPagesTree = (pages, rootID = "root", baseURL = "") => {
-	const node = pages[rootID];
-	const childNodes = node.children;
-	const result = {
-		id: node.id,
-		name: node.name,
-		pageUrl: node.pageUrl,
-		absoluteUrl: rootID !== "root" ? `${baseURL}/${node.pageUrl}` : ""
-	};
-
-	if (childNodes) {
-		result.children = childNodes.map(el => getPagesTree(pages, el, result.absoluteUrl));
-	}
-
-	return result;
-};
-
-var findSubtree = (tree, url) => {
-	if (tree.absoluteUrl === url) {
-		return tree;
-	}
-
-	if (tree.children) {
-		let result = null;
-		tree.children.some(el => {
-			result = findSubtree(el, url);
-			return result;
-		});
-		return result;
-	}
-
-	return null;
-};
-
-var filterSubtree = (tree, mode, pages) => {
-	if (mode === "exclude") {
-		tree.children = tree.children.reduce((result, el) => {
-			if (pages.includes(el.absoluteUrl)) {
-				return result;
-			}
-
-			if (el.children) {
-				el = filterSubtree(el, mode, pages);
-			}
-
-			result.push(el);
-			return result;
-		}, []);
-		return tree;
-	}
-
-	if (mode === "include") {
-		tree.children = tree.children.reduce((result, el) => {
-			if (el.children) {
-				el = filterSubtree(el, mode, pages);
-			}
-
-			if (pages.includes(el.absoluteUrl) || el?.children?.length > 0) {
-				result.push(el);
-			}
-
-			return result;
-		}, []);
-		return tree;
-	}
-};
-
 var Menu = ({
-	rootId = "",
+	rootId: rootUrl = "",
 	depth,
 	filterMode,
 	filterPages: origFilterPages,
@@ -286,18 +291,12 @@ var Menu = ({
 		rest
 	} = useOverrides(props, overrides_default, propsDefault_default);
 	const pages = getAPI_default().pages || {};
-	const tree = getPagesTree(pages);
-	const subtree = findSubtree(tree, rootId);
 	const filterPages = origFilterPages?.length > 0 ? origFilterPages.split(",") : [];
-	const filteredSubtree = filterSubtree(subtree, filterMode, filterPages);
+	const tree = PageTreeNode.fromPages(pages).findSubtreeByUrl(rootUrl).filterByPages(filterMode, filterPages).truncate(depth);
 	return <Wrapper
-		tree={filteredSubtree}
-		rootId={rootId}
-		pages={pages}
+		tree={tree}
 		depth={depth}
 		exact={exact}
-		filterMode={filterMode}
-		filterPages={filterPages}
 		override={override}
 		padding="6px"
 		margin="0px"

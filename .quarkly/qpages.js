@@ -5,6 +5,10 @@ module.exports = [
 	"/testpage/a/",
 	"/testpage/a/b/",
 	"/asasd/",
+	"/test/",
+	"/smooth/",
+	"/carousel-test/",
+	"/carousel2/",
 	"/404/",
 	"/",
 	"/404.html"

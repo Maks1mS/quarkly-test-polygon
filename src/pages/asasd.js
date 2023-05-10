@@ -18,6 +18,9 @@ export default (() => {
 			<style place={"endOfHead"} rawKey={"63d15c40f2f031001fb77bf3"}>
 				{":root {\n  box-sizing: border-box;\n}\n\n* {\n  box-sizing: inherit;\n}"}
 			</style>
+			<style place={"endOfHead"} rawKey={"6422ec9a8bbada3429bbb695"}>
+				{"html {\n  scroll-behavior: smooth;\n}"}
+			</style>
 		</RawHtml>
 	</Theme>;
 });

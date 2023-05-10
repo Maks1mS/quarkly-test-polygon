@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "theme";
-import { Theme, Text, Box, Image, Icon } from "@quarkly/widgets";
+import { Theme, Text, Image, Box, Icon, Link, List } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { RawHtml, Override } from "@quarkly/components";
@@ -16,10 +16,23 @@ export default (() => {
 			<meta name={"description"} content={"Web site created using quarkly.io"} />
 			<link rel={"shortcut icon"} href={"https://uploads.quarkly.io/readme/cra/favicon-32x32.ico"} type={"image/x-icon"} />
 		</Helmet>
-		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader>
+		<Text margin="0px 0px 0px 0px" font="--headline2">
+			Full Menu
+		</Text>
+		<Components.MyMenu filterMode="exclude" depth="5" exact-active-match />
+		<Text margin="0px 0px 0px 0px" font="--headline2">
+			Hide pages
+		</Text>
+		<Components.MyMenu filterMode="exclude" depth="5" exact-active-match filterPages="/testpage,/index" />
+		<Text margin="0px 0px 0px 0px" font="--headline2">
+			Show only pages
+		</Text>
+		<Components.MyMenu filterMode="include" depth="5" exact-active-match filterPages="/testpage,/index" />
+		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\\\\\\\\\\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader>
 			<Override slot="Cell THead" background="#974c4c" />
 		</Components.QuarklycommunityKitCsvToTable>
-		<Components.QuarklycommunityKitCsvToTable data="#;Product; Date Applied;Date Payment Received;Number of shares; Face Value; Date of Allotment; Status\\\\\\\\n1;7.5% Convertible Preference Shares;24/01/2023;24/01/2023;100;500000;24/01/2023; Pending" hasHeader csvDelimiter=";" />
+		<Components.QuarklycommunityKitCsvToTable data="#;Product; Date Applied;Date Payment Received;Number of shares; Face Value; Date of Allotment; Status\\\\\\\\\\\\\\\\n1;7.5% Convertible Preference Shares;24/01/2023;24/01/2023;100;500000;24/01/2023; Pending" hasHeader csvDelimiter=";" />
+		<Image src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=200" display="block" />
 		<Components.Table showHeader showFooter>
 			<Override slot="Text TBody Row-1 Col-3">
 				asdasd
@@ -61,11 +74,11 @@ export default (() => {
 		<Text margin="0px 0px 0px 0px">
 			\n
 		</Text>
-		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader />
+		<Components.QuarklycommunityKitCsvToTable data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\\\\\\\\\\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" hasHeader />
 		<Text margin="0px 0px 0px 0px">
 			\\n
 		</Text>
-		<Components.CsvToTable2 data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" />
+		<Components.CsvToTable2 data="#,Product, Date Applied,Date Payment Received,Number of shares, Face Value, Date of Allotment, Status\\\\\\\\\\\\\\\\n 1, 7.5% Convertible Preference Shares ​,24/01/2023, 24/01/2023,100, 500000, 24/01/2023, Pending" />
 		<Components.QuarklycommunityKitPopup />
 		<Components.QuarklycommunityKitTimeline>
 			<Override slot="Descr 0">
@@ -112,9 +125,37 @@ export default (() => {
 			lg-width="100%"
 		/>
 		<Components.QuarklycommunityKitMenu />
+		<Link href="#" color="#000000">
+			Some text
+		</Link>
+		<List
+			margin="0px 0px 0px 0px"
+			padding="0px 0px 0px 20px"
+			list-style-type="disc"
+			as="ul"
+			color="--grey"
+		>
+			<Text margin="0px 0px 0px 0px">
+				First item
+			</Text>
+			<Text margin="0px 0px 0px 0px">
+				Second item
+			</Text>
+			<Text margin="0px 0px 0px 0px">
+				Third item
+			</Text>
+		</List>
+		<Components.Popup>
+			<Link href="/testpage" color="#000000">
+				Some text
+			</Link>
+		</Components.Popup>
 		<RawHtml>
 			<style place={"endOfHead"} rawKey={"63d15c40f2f031001fb77bf3"}>
 				{":root {\n  box-sizing: border-box;\n}\n\n* {\n  box-sizing: inherit;\n}"}
+			</style>
+			<style place={"endOfHead"} rawKey={"6422ec9a8bbada3429bbb695"}>
+				{"html {\n  scroll-behavior: smooth;\n}"}
 			</style>
 		</RawHtml>
 	</Theme>;

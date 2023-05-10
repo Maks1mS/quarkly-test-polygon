@@ -4,7 +4,7 @@ export default {
 		"sm": [
 			{
 				"type": "max-width",
-				"value": 576
+				"value": "576"
 			}
 		],
 		"md": [
@@ -151,5 +151,5 @@ export default {
 			}
 		}
 	},
-	"version": 1
+	"version": 2
 }
