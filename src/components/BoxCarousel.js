@@ -187,7 +187,7 @@ var useSubscribe = (eventEmmiter, event, cb) => {
 
 var useSubscribe_default = useSubscribe; // src/BoxCarousel/components/navigation/Arrow.js
 
-var Button = atomize2.button(pick_default(QButton, "name", "description", "effects", "propInfo"), QButton.defaultProps);
+var Button = atomize2.button(pick_default(QButton, "name", "effects", "description", "propInfo"), QButton.defaultProps);
 var Arrow = forwardRef(({
 	direction,
 	...props
@@ -197,8 +197,6 @@ var Arrow = forwardRef(({
 		swiper
 	} = useBoxCarouselData_default();
 	const onDestroy = useCallback2(() => {
-		console.log("onDestroy", ref);
-
 		if (ref.current) {
 			ref.current.disabled = false;
 		}
@@ -686,11 +684,11 @@ var usePaginationModule_default = usePaginationModule; // src/BoxCarousel/compon
 
 import React12, { useRef as useRef2, useCallback as useCallback5, useState as useState7, useEffect as useEffect5 } from "react";
 import { Box as Box6, Button as Button3, Icon as Icon2 } from "@quarkly/widgets";
-import atomized from "@quarkly/atomize";
-var Svg = atomized.svg({
+import atomize3 from "@quarkly/atomize";
+var Svg = atomize3.svg({
 	useAliases: false
 });
-var Circle = atomized.circle({
+var Circle = atomize3.circle({
 	useAliases: false
 });
 
@@ -1526,7 +1524,7 @@ var BoxCarousel = ({
 		override,
 		ChildPlaceholder,
 		rest
-	} = useOverrides(props, overrides_default, {});
+	} = useOverrides(props, overrides_default);
 	const [swiper, setSwiper] = useState8(null);
 	const slidesCount = getNumber_default(slidesProp, propsDefault_default.slidesCount, x => x > 0);
 	const animDuration = convertCssTimingToMs_default(animDurationProp);
@@ -1626,6 +1624,7 @@ Object.assign(BoxCarousel, {
 		en: "This component is a counter that increases or decreases to a certain value",
 		ru: "Компонент представляет из себя счетчик, который увеличивается или уменьшается до определенного значения"
 	},
+	overrides: overrides_default,
 	propInfo: propsInfo_default,
 	defaultProps: propsDefault_default
 });

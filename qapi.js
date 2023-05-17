@@ -12,7 +12,8 @@ export default {
 				"641409173dedc4001fc902d9",
 				"6422eb2c4b38c40020038222",
 				"644a863db4ef24002073de58",
-				"644cbecd8d8a1a00208bd5c0"
+				"644cbecd8d8a1a00208bd5c0",
+				"645b7ddd3d9fe5001ef05824"
 			]
 		},
 		"63d15c40f2f031001fb77bfa": {
@@ -76,6 +77,11 @@ export default {
 			"id": "644cbecd8d8a1a00208bd5c0",
 			"pageUrl": "carousel2",
 			"name": "Carousel2"
+		},
+		"645b7ddd3d9fe5001ef05824": {
+			"id": "645b7ddd3d9fe5001ef05824",
+			"pageUrl": "aaaa",
+			"name": "aaaa"
 		}
 	},
 	"mode": "production",

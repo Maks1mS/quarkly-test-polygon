@@ -9,6 +9,7 @@ module.exports = [
 	"/smooth/",
 	"/carousel-test/",
 	"/carousel2/",
+	"/aaaa/",
 	"/404/",
 	"/",
 	"/404.html"

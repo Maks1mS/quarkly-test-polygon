@@ -13,7 +13,8 @@ const pageStyles = {
     "test": {},
     "smooth": {},
     "carousel-test": {},
-    "carousel2": {}
+    "carousel2": {},
+    "aaaa": {}
 };
 
 const PageStyles = createGlobalStyle`

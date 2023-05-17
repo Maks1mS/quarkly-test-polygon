@@ -18,7 +18,13 @@ export default (() => {
 			<meta name={"description"} content={"Web site created using quarkly.io"} />
 			<link rel={"shortcut icon"} href={"https://uploads.quarkly.io/readme/cra/favicon-32x32.ico"} type={"image/x-icon"} />
 		</Helmet>
-		<Components.BoxCarousel height="640px" lg-height="384px" showAutoPlayButton autoPlay={false}>
+		<Components.BoxCarousel
+			height="640px"
+			showAutoPlayButton
+			autoPlay={false}
+			showPagination="labelsin"
+			lg-height="384px"
+		>
 			<Override slot="Slide 1">
 				<Section
 					background="linear-gradient(0deg,rgba(16, 53, 65, 0.6) 0%,rgba(16, 53, 65, 0.6) 100%),rgba(0, 0, 0, 0) url(https://images.unsplash.com/photo-1608876873794-772af7ce5a9d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2000) 0% 0% /cover repeat scroll padding-box"
@@ -32,9 +38,9 @@ export default (() => {
 					<Override
 						slot="SectionContent"
 						flex-direction="row"
-						padding="108px 0px 108px 0px"
 						lg-flex-direction="column"
 						lg-justify-content="flex-end"
+						padding="108px 0px 108px 0px"
 					/>
 					<Box
 						display="flex"
@@ -119,8 +125,8 @@ export default (() => {
 					inner-width="80%"
 					inner-min-width="280px"
 					inner-max-width="--cmp-section-maxWidth-default"
-					lg-height="384px"
 					background="linear-gradient(0deg,rgba(16, 53, 65, 0.6) 0%,rgba(16, 53, 65, 0.6) 100%),rgba(0, 0, 0, 0) url(https://images.unsplash.com/photo-1592859600972-1b0834d83747?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2000) 0% 0% /cover repeat scroll padding-box"
+					lg-height="384px"
 				>
 					<Override
 						slot="SectionContent"
@@ -282,6 +288,279 @@ export default (() => {
 			<Override slot="Navigation Container Right" />
 			<Override slot="AutoPlay Button Icon Pause" color="--light" />
 			<Override slot="AutoPlay Button Icon" color="#ffffff" />
+			<Override slot="Slide" />
+		</Components.BoxCarousel>
+		<Components.BoxCarousel
+			height="600px"
+			showAutoPlayButton
+			autoPlay={false}
+			showPagination="labelsin"
+			lg-height="384px"
+		>
+			<Override slot="Slide 1">
+				<Section
+					background="linear-gradient(0deg,rgba(16, 53, 65, 0.6) 0%,rgba(16, 53, 65, 0.6) 100%),rgba(0, 0, 0, 0) url(https://images.unsplash.com/photo-1608876873794-772af7ce5a9d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2000) 0% 0% /cover repeat scroll padding-box"
+					min-height="100%"
+					padding="0px 0 0px 0"
+					inner-width="80%"
+					inner-min-width="280px"
+					inner-max-width="--cmp-section-maxWidth-default"
+					lg-height="384px"
+				>
+					<Override
+						slot="SectionContent"
+						flex-direction="row"
+						lg-flex-direction="column"
+						lg-justify-content="flex-end"
+						padding="108px 0px 108px 0px"
+					/>
+					<Box
+						display="flex"
+						width="50%"
+						flex-direction="column"
+						justify-content="flex-end"
+						lg-margin="0px 0px 18px 0px"
+						md-width="100%"
+					>
+						<Text margin="0px 0px 0px 0px" font="--lead" color="white" lg-font="--base">
+							Tour 1
+						</Text>
+						<Text margin="0px 0px 0px 0px" font="--headline1" color="white" lg-font="--headline2">
+							Mountains
+						</Text>
+					</Box>
+					<Box
+						width="50%"
+						display="flex"
+						flex-direction="column"
+						justify-content="flex-end"
+						md-width="100%"
+					>
+						<Text
+							margin="0px 0px 36px 0px"
+							color="white"
+							font="--base"
+							max-width="360px"
+							lg-margin="0px 0px 24px 0px"
+						>
+							Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at
+						</Text>
+						<Box display="flex" grid-gap="24px">
+							<Button
+								border-width="2px"
+								border-style="solid"
+								border-color="white"
+								background="none"
+								padding="6px 34px 8px 34px"
+								border-radius="50px"
+								hover-background="--color-darkL2"
+								transition="background-color 0.1s ease-in-out 0s"
+								font="--lead"
+								md-font="--base"
+								sm-padding="4px 22px 6px 22px"
+								sm-height="auto"
+							>
+								Let’s go!
+							</Button>
+							<Button
+								background="none"
+								padding="8px 24px 10px 24px"
+								border-radius="50px"
+								hover-background="rgba(25, 30, 34, 0.6)"
+								transition="background-color 0.1s ease-in-out 0s"
+								font="italic 300 1.25rem/1.5 --fontFamily-sans"
+								md-font="italic 300 16px/1.5 --fontFamily-sans"
+								sm-padding="8px 18px 10px 18px"
+							>
+								Read about
+							</Button>
+						</Box>
+					</Box>
+				</Section>
+			</Override>
+			<Override slot="Label" color="white" margin="0px 0px 6px 0px" />
+			<Override slot="Pagination Underline" background="white" />
+			<Override slot="Label 1">
+				Tour 1
+			</Override>
+			<Override slot="Label 2">
+				Tour 2
+			</Override>
+			<Override slot="Label 3">
+				Tour 3
+			</Override>
+			<Override slot="Slide 2">
+				<Section
+					margin
+					min-height="100%"
+					padding="0px 0 0px 0"
+					inner-width="80%"
+					inner-min-width="280px"
+					inner-max-width="--cmp-section-maxWidth-default"
+					background="linear-gradient(0deg,rgba(16, 53, 65, 0.6) 0%,rgba(16, 53, 65, 0.6) 100%),rgba(0, 0, 0, 0) url(https://images.unsplash.com/photo-1592859600972-1b0834d83747?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2000) 0% 0% /cover repeat scroll padding-box"
+					lg-height="384px"
+				>
+					<Override
+						slot="SectionContent"
+						flex-direction="row"
+						padding="108px 0px 108px 0px"
+						lg-flex-direction="column"
+						lg-justify-content="flex-end"
+					/>
+					<Box
+						display="flex"
+						width="50%"
+						flex-direction="column"
+						justify-content="flex-end"
+						lg-margin="0px 0px 18px 0px"
+						md-width="100%"
+					>
+						<Text margin="0px 0px 0px 0px" font="--lead" color="white" lg-font="--base">
+							Tour 2
+						</Text>
+						<Text margin="0px 0px 0px 0px" font="--headline1" color="white" lg-font="--headline2">
+							Forest
+						</Text>
+					</Box>
+					<Box
+						width="50%"
+						display="flex"
+						flex-direction="column"
+						justify-content="flex-end"
+						md-width="100%"
+					>
+						<Text
+							margin="0px 0px 36px 0px"
+							color="white"
+							font="--base"
+							max-width="360px"
+							lg-margin="0px 0px 24px 0px"
+						>
+							Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at
+						</Text>
+						<Box display="flex" grid-gap="24px">
+							<Button
+								border-width="2px"
+								border-style="solid"
+								border-color="white"
+								background="none"
+								padding="6px 34px 8px 34px"
+								border-radius="50px"
+								hover-background="--color-darkL2"
+								transition="background-color 0.1s ease-in-out 0s"
+								font="--lead"
+								md-font="--base"
+								sm-padding="4px 22px 6px 22px"
+								sm-height="auto"
+							>
+								Let’s go!
+							</Button>
+							<Button
+								background="none"
+								padding="8px 24px 10px 24px"
+								border-radius="50px"
+								hover-background="rgba(25, 30, 34, 0.6)"
+								transition="background-color 0.1s ease-in-out 0s"
+								font="italic 300 1.25rem/1.5 --fontFamily-sans"
+								md-font="italic 300 16px/1.5 --fontFamily-sans"
+								sm-padding="8px 18px 10px 18px"
+							>
+								Read about
+							</Button>
+						</Box>
+					</Box>
+				</Section>
+			</Override>
+			<Override slot="Slide 3">
+				<Section
+					background="linear-gradient(0deg,rgba(16, 53, 65, 0.6) 0%,rgba(16, 53, 65, 0.6) 100%),rgba(0, 0, 0, 0) url(https://images.unsplash.com/photo-1550951298-5c7b95a66bfc?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2000) 0% 0% /cover repeat scroll padding-box"
+					min-height="100%"
+					padding="0px 0 0px 0"
+					inner-width="80%"
+					inner-min-width="280px"
+					inner-max-width="--cmp-section-maxWidth-default"
+					lg-height="384px"
+				>
+					<Override
+						slot="SectionContent"
+						flex-direction="row"
+						padding="108px 0px 108px 0px"
+						lg-flex-direction="column"
+						lg-justify-content="flex-end"
+					/>
+					<Box
+						display="flex"
+						width="50%"
+						flex-direction="column"
+						justify-content="flex-end"
+						lg-margin="0px 0px 18px 0px"
+						md-width="100%"
+					>
+						<Text margin="0px 0px 0px 0px" font="--lead" color="white" lg-font="--base">
+							Tour 3
+						</Text>
+						<Text margin="0px 0px 0px 0px" font="--headline1" color="white" lg-font="--headline2">
+							Sea
+						</Text>
+					</Box>
+					<Box
+						width="50%"
+						display="flex"
+						flex-direction="column"
+						justify-content="flex-end"
+						md-width="100%"
+					>
+						<Text
+							margin="0px 0px 36px 0px"
+							color="white"
+							font="--base"
+							max-width="360px"
+							lg-margin="0px 0px 24px 0px"
+						>
+							Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at
+						</Text>
+						<Box display="flex" grid-gap="24px">
+							<Button
+								border-width="2px"
+								border-style="solid"
+								border-color="white"
+								background="none"
+								padding="6px 34px 8px 34px"
+								border-radius="50px"
+								hover-background="--color-darkL2"
+								transition="background-color 0.1s ease-in-out 0s"
+								font="--lead"
+								md-font="--base"
+								sm-padding="4px 22px 6px 22px"
+								sm-height="auto"
+							>
+								Let’s go!
+							</Button>
+							<Button
+								background="none"
+								padding="8px 24px 10px 24px"
+								border-radius="50px"
+								hover-background="rgba(25, 30, 34, 0.6)"
+								transition="background-color 0.1s ease-in-out 0s"
+								font="italic 300 1.25rem/1.5 --fontFamily-sans"
+								md-font="italic 300 16px/1.5 --fontFamily-sans"
+								sm-padding="8px 18px 10px 18px"
+							>
+								Read about
+							</Button>
+						</Box>
+					</Box>
+				</Section>
+			</Override>
+			<Override slot="Arrow Icon Next" />
+			<Override slot="Arrow Icon" size="36px" width="48px" height="48px" />
+			<Override slot="Bullet Button 2" />
+			<Override slot="Pagination Container" />
+			<Override slot="Navigation Container" sm-position="static" />
+			<Override slot="Navigation Container Right" />
+			<Override slot="AutoPlay Button Icon Pause" color="--light" />
+			<Override slot="AutoPlay Button Icon" color="#ffffff" />
+			<Override slot="Slide" />
 		</Components.BoxCarousel>
 		<Components.BoxCarousel height="auto">
 			<Override slot="Slide 1">
@@ -809,7 +1088,7 @@ it sodales, at dignissim.
 			<Override slot="Arrow Icon Next" />
 			<Override slot="Navigation Container" sm-position="static" />
 		</Components.BoxCarousel>
-		<Components.BoxCarousel autoPlay showAutoPlayButton />
+		<Components.QuarklycommunityKitCsvToTable />
 		<RawHtml>
 			<style place={"endOfHead"} rawKey={"63d15c40f2f031001fb77bf3"}>
 				{":root {\n  box-sizing: border-box;\n}\n\n* {\n  box-sizing: inherit;\n}"}
